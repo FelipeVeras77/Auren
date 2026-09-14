@@ -1,0 +1,135 @@
+.sheet {
+  --sheet-w: 28rem;
+  padding: 0;
+  border: 0;
+  max-width: 100vw;
+  max-height: 100dvh;
+  background: var(--ice);
+  color: var(--graphite);
+  overflow: hidden;
+}
+
+.sheet::backdrop {
+  background: rgb(10 11 13 / 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.sm {
+  --sheet-w: 24rem;
+}
+.lg {
+  --sheet-w: 64rem;
+}
+
+/* Gavetas laterais */
+.right,
+.left {
+  width: min(var(--sheet-w), 100vw);
+  height: 100dvh;
+  margin: 0;
+  inset-block: 0;
+}
+.right {
+  margin-left: auto;
+  border-left: 1px solid var(--silver);
+}
+.left {
+  margin-right: auto;
+  border-right: 1px solid var(--silver);
+}
+
+/* Modal central */
+.center {
+  width: min(var(--sheet-w), calc(100vw - 2rem));
+  max-height: min(52rem, calc(100dvh - 2rem));
+  margin: auto;
+  border: 1px solid var(--silver);
+  border-radius: var(--radius);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: inherit;
+}
+.right .panel,
+.left .panel {
+  height: 100dvh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1rem 1rem 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.title {
+  font-size: 1.75rem;
+}
+
+.close {
+  flex-shrink: 0;
+}
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1.5rem;
+}
+
+.footer {
+  padding: 1.25rem 1.5rem 1.5rem;
+  border-top: 1px solid var(--rule);
+  background: var(--white);
+}
+
+/* Entrada suave; respeita prefers-reduced-motion via regra global. */
+.sheet[open] {
+  animation: fade 0.35s var(--ease);
+}
+.right[open] {
+  animation: from-right 0.45s var(--ease);
+}
+.left[open] {
+  animation: from-left 0.45s var(--ease);
+}
+.sheet[open]::backdrop {
+  animation: fade 0.35s var(--ease);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes from-right {
+  from {
+    transform: translateX(100%);
+  }
+}
+@keyframes from-left {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .center {
+    width: 100vw;
+    max-height: 100dvh;
+    height: 100dvh;
+    border: 0;
+  }
+  .center .panel {
+    height: 100dvh;
+  }
+  .body {
+    padding: 1.25rem;
+  }
+}

@@ -1,0 +1,233 @@
+.hero {
+  position: relative;
+  min-height: max(40rem, 100svh);
+  display: grid;
+  color: var(--ice);
+  background:
+    radial-gradient(60% 55% at 68% 42%, #2a3039 0%, transparent 70%),
+    var(--graphite);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Linha de horizonte prateada que "segura" o anel, detalhe de precisão. */
+.hero::after {
+  content: '';
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 5.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(184 189 199 / 0.35) 20%, rgb(184 189 199 / 0.35) 80%, transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.stage {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  /* Termina antes da ficha técnica para não sobrepor texto. */
+  left: 38%;
+  right: max(9rem, 11vw);
+  display: grid;
+  place-items: center;
+}
+
+.poster,
+.live {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+}
+
+.poster {
+  object-fit: contain;
+  max-height: 88svh;
+  transition: opacity 1.2s var(--ease);
+}
+.posterHidden {
+  opacity: 0;
+}
+
+.live {
+  opacity: 0;
+  transition: opacity 1.2s var(--ease);
+}
+.liveOn {
+  opacity: 1;
+}
+
+.canvasHost {
+  width: 100%;
+  height: 100%;
+}
+.canvasHost canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: 1fr auto auto;
+  padding-top: calc(var(--header-h) + 2rem);
+  padding-bottom: 1.5rem;
+  pointer-events: none;
+}
+.inner a,
+.inner button {
+  pointer-events: auto;
+}
+
+.copy {
+  grid-column: 1;
+  grid-row: 2;
+  max-width: 40rem;
+  padding-bottom: clamp(2rem, 6vh, 4rem);
+}
+
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--silver);
+}
+
+.title {
+  font-size: clamp(3rem, 8.4vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+}
+.title em {
+  display: block;
+  font-style: italic;
+  background: linear-gradient(100deg, #9aa1ad 0%, var(--white) 38%, var(--silver) 62%, #eef1f5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-right: 0.08em;
+}
+
+.lede {
+  margin-top: 1.5rem;
+  max-width: 34ch;
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  color: var(--silver-soft);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.spec {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: end;
+  margin: 0 0 clamp(2rem, 6vh, 4rem);
+  display: grid;
+  gap: 1rem;
+  padding-left: 1.25rem;
+  border-left: 1px solid rgb(184 189 199 / 0.3);
+  font-size: 0.8125rem;
+}
+.spec dt {
+  color: var(--steel);
+  color: #8a94a3;
+}
+.spec dd {
+  margin: 0.1rem 0 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--ice);
+}
+
+.scrollHint {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--silver);
+  text-decoration: none;
+  transition: color 0.3s var(--ease);
+}
+.scrollHint:hover {
+  color: var(--white);
+}
+.scrollHint svg {
+  animation: drift 2.4s var(--ease) infinite;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(-2px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 960px) {
+  .stage {
+    right: 0;
+    left: 0;
+    width: 100%;
+    top: var(--header-h);
+    bottom: auto;
+    height: 58svh;
+  }
+  .poster {
+    max-height: 100%;
+  }
+  .inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto auto auto;
+  }
+  .copy {
+    grid-row: 2;
+    padding-bottom: 1.5rem;
+  }
+  .spec {
+    grid-column: 1;
+    grid-row: 3;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    gap: 1.75rem;
+    border-left: 0;
+    padding-left: 0;
+    padding-top: 1rem;
+    border-top: 1px solid rgb(184 189 199 / 0.25);
+    margin-bottom: 1rem;
+  }
+  .scrollHint {
+    grid-row: 4;
+  }
+  .hero::after {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctas > * {
+    flex: 1 1 100%;
+  }
+  .spec {
+    gap: 1.25rem;
+  }
+}

@@ -1,0 +1,99 @@
+.section {
+  padding-block: clamp(5rem, 10vw, 8rem);
+  background: var(--white);
+  border-top: 1px solid var(--rule);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
+}
+
+.eyebrow {
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem);
+  max-width: 18ch;
+}
+.title em {
+  font-style: italic;
+  color: var(--steel);
+}
+
+.form {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.field {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  min-height: 3rem;
+  padding: 0 1rem;
+  border: 1px solid var(--silver);
+  border-radius: var(--radius);
+  background: var(--ice);
+  font-size: 1rem;
+  transition: border-color 0.2s var(--ease);
+}
+.input:hover {
+  border-color: var(--steel);
+}
+.input:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 0;
+  border-color: var(--graphite);
+}
+.input[aria-invalid='true'] {
+  border-color: #b4233b;
+}
+
+.help {
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+}
+
+.error,
+.success {
+  font-size: 0.9375rem;
+  padding: 0.6rem 0.85rem;
+  border-left: 2px solid;
+}
+.error {
+  color: #9c1c31;
+  border-color: #b4233b;
+  background: #fbeef0;
+}
+.success {
+  color: var(--graphite);
+  border-color: var(--light);
+  background: color-mix(in srgb, var(--light) 16%, var(--white));
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 460px) {
+  .field {
+    flex-direction: column;
+  }
+}

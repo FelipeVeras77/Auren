@@ -1,0 +1,141 @@
+.section {
+  position: relative;
+  padding-block: clamp(5rem, 11vw, 9rem);
+  color: var(--ice);
+  background-color: var(--graphite);
+  /* Textura de prata escovada: filetes finos quase imperceptíveis + um brilho lateral. */
+  background-image:
+    radial-gradient(80% 60% at 85% 0%, rgb(141 184 232 / 0.08), transparent 60%),
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.018) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.012) 0 1px, transparent 1px 7px);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.alloy {
+  margin: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+.alloy figcaption {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--silver);
+}
+
+.bar {
+  display: flex;
+  height: 0.5rem;
+  border-radius: 999px;
+  overflow: hidden;
+  outline: 1px solid rgb(184 189 199 / 0.35);
+  outline-offset: 3px;
+}
+.silverPart {
+  width: 92.5%;
+  background: linear-gradient(90deg, #8e95a1, #eef1f5 45%, #aeb4bf 70%, #dfe3ea);
+}
+.copperPart {
+  width: 7.5%;
+  background: #a9826a;
+}
+
+.legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--silver);
+  font-variant-numeric: tabular-nums;
+}
+
+.detail {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.photo {
+  margin: 0;
+  position: relative;
+}
+.photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+/* Marcas de corte nos cantos, como numa prova de gravação. */
+.photo::before,
+.photo::after {
+  content: '';
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-color: var(--silver);
+  border-style: solid;
+  pointer-events: none;
+}
+.photo::before {
+  top: -0.6rem;
+  left: -0.6rem;
+  border-width: 1px 0 0 1px;
+}
+.photo::after {
+  right: -0.6rem;
+  bottom: -0.6rem;
+  border-width: 0 1px 1px 0;
+}
+
+.specs {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 2rem;
+}
+.specs > div {
+  padding: 1.25rem 0;
+  border-top: 1px solid rgb(184 189 199 / 0.25);
+}
+.specs dt {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+.specIndex {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--silver);
+  font-variant-numeric: tabular-nums;
+}
+.specs dd {
+  margin: 0.5rem 0 0;
+  color: var(--silver-soft);
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .specs {
+    grid-template-columns: 1fr;
+  }
+}

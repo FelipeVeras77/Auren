@@ -1,0 +1,122 @@
+.footer {
+  background: var(--graphite);
+  color: var(--silver-soft);
+  padding-top: clamp(4rem, 8vw, 6rem);
+  overflow: hidden;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
+}
+
+.tagline {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  line-height: 1.1;
+  color: var(--ice);
+  max-width: 14ch;
+}
+
+.whats {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  padding: 0.6rem 1rem 0.6rem 0.75rem;
+  border: 1px solid rgb(184 189 199 / 0.35);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--ice);
+  transition: border-color 0.25s var(--ease);
+}
+.whats:hover {
+  border-color: var(--light);
+}
+.whats span {
+  display: grid;
+  font-size: 0.9375rem;
+}
+.whats small {
+  font-size: 0.75rem;
+  color: var(--silver);
+}
+
+.col h2 {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ice);
+  margin-bottom: 1rem;
+}
+.col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.15rem;
+}
+.col a,
+.col button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  font-size: 0.9375rem;
+  color: var(--silver-soft);
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+.col a:hover,
+.col button:hover {
+  color: var(--white);
+}
+
+.wordmark {
+  margin: clamp(3rem, 6vw, 5rem) 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(6rem, 27vw, 26rem);
+  line-height: 0.72;
+  letter-spacing: -0.04em;
+  text-align: center;
+  background: linear-gradient(180deg, rgb(184 189 199 / 0.5), rgb(184 189 199 / 0.04) 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid rgb(184 189 199 / 0.18);
+  font-size: 0.8125rem;
+  color: #9aa3b0;
+}
+.bottom a {
+  color: var(--silver-soft);
+}
+
+@media (max-width: 900px) {
+  .top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 460px) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+}
